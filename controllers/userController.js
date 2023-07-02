@@ -57,7 +57,7 @@ export const userController = {
     register: async (req, res) => {
         try {
             const randomCode = Math.floor(Math.random() * 10000);
-            const user = await User.find({ email: req.body.email,finCode:req.body.finCode,serialNumber:req.body.serialNumber })
+            const user = await User.find({ email: req.body.email } && {finCode:req.body.finCode} && {serialNumber:req.body.serialNumber})
             if (user.length > 0) {
                 res.send('Your are already registered')
             }
